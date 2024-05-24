@@ -1,0 +1,334 @@
+/*==========================================
+                GLOBAL SCOPE
+============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --warna-satu:#222222;
+    --warna-dua: #050505;
+    --warna-tiga: #ffc010;
+    --warna-text: #ffffff;
+    --font-main: "Montserrat", sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    background-color: #ededed;
+}
+main{
+    margin-left: 15vw;
+    padding-top: 80px;
+}
+header{
+    width:85vw;
+    margin-left: 15vw;
+    position: fixed;
+    z-index: 1000;
+}
+.container{
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--warna-text);
+    border-radius: 5px;
+    min-height: 85vh;
+}
+/*==========================================
+                   SIDEBAR
+============================================ */
+
+.sidebar{
+    width: 15vw;
+    height: 100vh;
+    background-color: var(--warna-satu);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    z-index: 1000;
+}
+.logo img{
+    width: 80%;
+    height: 100px;
+    margin-left: 10%;
+}
+.profil{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 1rem;
+}
+.profil img{
+    width: 40%;
+    height: auto;
+    border-radius: 50%;
+}
+.profil #label{
+    color: var(--warna-text);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 12px;
+    background-color: #FF8315;
+    padding: 8px;
+    border-radius: 20px;
+}
+.profil #nama{
+    color: var(--warna-text);
+    font-family: var(--font-main);
+    align-items: center;
+    text-align: center;
+}
+.navigasi{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    justify-content: center;
+    gap: 1rem;
+}
+.navigasi a{
+    text-decoration: none;
+}
+.navlink{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--warna-text);
+    font-family: var(--font-main);
+    font-weight: 600;
+}
+.navlink svg{
+    color: #ffffff;
+    font-size: 30px;
+}
+.navlink:hover{
+    background-color: var(--warna-dua);
+    border-left: #ffc010 solid 4px;
+}
+
+/*==========================================
+                   HEADER
+============================================ */
+.head{
+    background-color: var(--warna-text);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.judul img{
+    width: 28px;
+    height: 28px;
+}
+.akun{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+.akun img{
+    width: 36px;
+    height: auto;
+    border: #050505 solid;
+    border-radius: 50%;
+}
+.akun .bx{
+    font-size: 24px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.akun:hover #dropdown-content {
+    display: block;
+}
+
+/*==========================================
+                   daftar
+============================================ */
+.jalur{
+    background-color: var(--warna-text);
+}
+.banner{
+    display: flex;
+    justify-content: center;
+}
+.banner p{
+    font-family: var(--font-main);
+    color: var(--warna-text);
+    font-weight: 500;
+    font-size: 30px;
+    background-color: #FF8315;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.jalur_text{
+    font-family: var(--font-main);
+    font-weight: 300;
+    font-size: 20px;
+}
+.pilihan{
+    margin-top: 20px;
+    font-family: var(--font-main);
+}
+.pilihan p{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+/* Style untuk seluruh tabel */
+.jabel {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-main);
+  }
+
+  /* Style untuk sel header */
+  .jabel thead th {
+    font-weight: bold; /* Membuat judul tabel menjadi tebal */
+    text-align: center; /* Pusatkan judul */
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+
+  /* Style untuk sel data di kolom pertama */
+  .jabel tbody td:first-child {
+    text-align: left; /* Rata kiri teks di kolom Jalur */
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+
+  /* Style untuk sel data di kolom kedua */
+  .jabel tbody td:nth-child(2),
+  .jabel tbody td:last-child {
+    text-align: center; /* Pusatkan teks di kolom Biaya dan Aksi */
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+  .jabel tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Warna latar belakang untuk baris genap */
+  }
+  .jabel tbody td a{
+    text-decoration: none;
+  }
+.jaton{
+    font-size: 16px;
+    color: var(--warna-text);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #0074B1;
+    width: 80px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 37%;
+}
+.jaton svg{
+    width: 20px;
+    height: auto;
+}
+/*==========================================
+                   Pembayaran
+============================================ */
+.payment{
+    font-family: var(--font-main);
+    text-align: center;
+    padding-top: 20%;
+    background-color:#050505;
+}
+.payment span {
+    font-size: 56px;
+    color: aqua;
+    text-shadow: 0 0 100px aqua, 0 0 100px aqua, 0 0 50px aqua, 0 0 50px aqua, 0 0 50px aqua, 0 0 50px aqua, 0 0 50px aqua;
+}
+
+/*==========================================
+                   listpen
+============================================ */
+.listpen{
+    background-color: var(--warna-text);
+    font-family: var(--font-main);
+}
+.toptable{
+    justify-content: space-between;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#jurdul{
+    font-weight: 600;
+    font-size: 20px;
+}
+.filter-butt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 18px;
+    background-color: #0074B1;
+    color: var(--warna-text);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

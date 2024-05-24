@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/landing.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="icon" href="assets/images/Logo Only 1.svg" type="image/svg+xml">
@@ -28,9 +28,9 @@
                     <li><a href="#jalur">Jalur Pendaftaran</a></li>
                     <li><a href="#timeline">Timeline</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#">Login</a></li>
                 </ul>
             </div>
+            <a class="login" href="{{ route('login') }}">Login</a>
             <i class="bx bx-menu" aria-label="menu" id="menu"></i>
         </div>
     </nav>
@@ -47,7 +47,7 @@
                     dan menjadi bagian Gotham School
                 </p>
                 <div class="btn">
-                    <a href="#">Daftar Sekarang</a>
+                    <a href="{{ route('login') }}">Daftar Sekarang</a>
                     <i class='bx bx-chevron-right'></i>
                 </div>
             </div>
@@ -248,9 +248,11 @@
                         </div>
                     </div>
 
-                    <div class="dafbutt">
-                        <p>Daftar</p>
-                    </div>
+                    <a href="{{ route('login') }}" class="daflink">
+                        <div class="dafbutt">
+                            <p>Daftar</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="jabox">
@@ -278,9 +280,11 @@
                         </div>
                     </div>
 
-                    <div class="dafbutt">
-                        <p>Daftar</p>
-                    </div>
+                    <a href="{{ route('login') }}" class="daflink">
+                        <div class="dafbutt">
+                            <p>Daftar</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="jabox">
@@ -314,9 +318,11 @@
                         </div>
                     </div>
 
-                    <div class="dafbutt">
-                        <p>Daftar</p>
-                    </div>
+                    <a href="{{ route('login') }}" class="daflink">
+                        <div class="dafbutt">
+                            <p>Daftar</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -469,7 +475,7 @@
         </div>
     </footer>
 
-    <script src="js/index.js"></script>
+    <script src="js/landing.js"></script>
 </body>
 
 </html>
