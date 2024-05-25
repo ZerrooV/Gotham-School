@@ -363,6 +363,13 @@ header{
     margin-top: 0.5rem;
     border-radius: 7px;
 }
+.form select{
+    width: 25rem;
+    height: 2rem;
+    border: 2px #ECECEC solid;
+    margin-top: 0.5rem;
+    border-radius: 7px;
+}
 .form p{
     font-size: 1rem;
     font-weight: 600;

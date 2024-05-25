@@ -49,7 +49,10 @@
                     </div>
                     <div class="form">
                         <p>Jenis Kelamin</p>
-                        <input type="text" name="jenis_kelamin" placeholder="Masukan Jenis Kelamin">
+                        <select name="jenis_kelamin">
+                            <option value="Laki-Laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
                     <div class="form">
                         <p>Alamat</p>
@@ -72,7 +75,7 @@
                     </div>
                     <div class="formfoto">
                         <label for="formFile" class="form-label">Foto 3x4</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" name="foto">
                         <p>Ketentuan : Mohon untuk mengupload foto <br> formal anda dengan background merah ukuran 3x4</p>
                     </div>
                 </div>
