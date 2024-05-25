@@ -4,8 +4,8 @@
     <div class="payment container">
         <h1>
             <span>
-                LAGI DIBUAT NGAB <br>
-                ~K~SABAR
+                Pusing ngurus API nya <br>
+                buat tida yaa
             </span>
         </h1>
     </div>

@@ -10,6 +10,15 @@ class PpdbController extends Controller
     {
         return view('ppdb.daftar');
     }
+    public function formdata(){
+        return view('ppdb.formdata');
+    }
+    public function formnilai(){
+        return view('ppdb.formnilai');
+    }
+    public function formjurusan(){
+        return view('ppdb.formjurusan');
+    }
     public function pembayaran()
     {
         return view('ppdb.pembayaran');

@@ -447,6 +447,22 @@ section{
 .dafbutt:hover{
     background-color: #768399;
 }
+.dafbuttop{
+    border-radius: 5px;
+    background-color: #0a0e0f;
+    padding: 15px 0 15px 0;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+}
+.dafbuttop p{
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.dafbuttop:hover{
+    background-color: #768399;
+}
 .boxcon{
     display: flex;
     justify-content: center;

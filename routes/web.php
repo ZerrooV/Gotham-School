@@ -31,6 +31,9 @@ Route::post('/register', [LoginController::class, 'register'])->name('register')
 Route::middleware(['auth'])->group(function(){
     Route::prefix('/ppdb')->controller(PpdbController::class)->name('ppdb.')->group(function() {
         Route::get('/daftar', 'daftar')->name('daftar');
+        Route::get('/formdata','formdata')->name('formdata');
+        Route::get('/formnilai','formnilai')->name('formnilai');
+        Route::get('/formjurusan','formjurusan')->name('formjurusan');
         Route::get('/pembayaran', 'pembayaran')->name('pembayaran');
         Route::get('/listpen', 'listpen')->name('listpen');
         Route::get('/pengumuman', 'pengumuman')->name('pengumuman');

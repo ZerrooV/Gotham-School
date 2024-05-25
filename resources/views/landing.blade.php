@@ -281,8 +281,8 @@
                     </div>
 
                     <a href="{{ route('login') }}" class="daflink">
-                        <div class="dafbutt">
-                            <p>Daftar</p>
+                        <div class="dafbuttop">
+                            <p>TUTUP</p>
                         </div>
                     </a>
                 </div>
@@ -319,8 +319,8 @@
                     </div>
 
                     <a href="{{ route('login') }}" class="daflink">
-                        <div class="dafbutt">
-                            <p>Daftar</p>
+                        <div class="dafbuttop">
+                            <p>TUTUP</p>
                         </div>
                     </a>
                 </div>
@@ -464,7 +464,7 @@
             </div>
             <div class="person">
                 <img src="assets/DevImages/dev5.jpeg" alt="person">
-                <p>BackEnd</p>
+                <p>FullStack</p>
                 <h5>MUHAMMAD VEKA SYAHPUTRA</h5>
             </div>
             <div class="person">
