@@ -71,6 +71,7 @@ header{
     width: 40%;
     height: auto;
     border-radius: 50%;
+    object-fit: cover;
 }
 .profil #label{
     color: var(--warna-text);
@@ -302,6 +303,20 @@ header{
     gap: 0.2rem;
     margin-left: 37%;
 }
+.jatontar{
+    font-size: 16px;
+    color: var(--warna-text);
+    padding: 5px;
+    border-radius: 5px;
+    background-color:#0074B1;
+    width: 120px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 32%;
+}
 /*==========================================
                    formdata
 ============================================ */
@@ -484,7 +499,8 @@ header{
     background-color: var(--warna-text);
     font-family: var(--font-main);
 }
-.toptable{
+#jurusan-form{
+    display: flex;
     justify-content: space-between;
     padding-top: 20px;
     display: flex;
@@ -507,6 +523,19 @@ header{
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+#jurusan-select{
+    background-color: #0074B1;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--warna-text);
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+}
+td{
+    font-weight: 500;
 }
 
 /*==========================================
@@ -563,4 +592,148 @@ header{
     height: 7rem;
     font-size: 3rem;
     padding-top: 25%;
+}
+#countdownForm{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    height: 30px;
+    gap: 0.5rem;
+}
+#submitCountdownBtn{
+    background-color: #0074B1;
+    border:none;
+    color: var(--warna-text);
+    padding: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.lihatPengumuman{
+    display: none;
+    justify-content: center;
+    margin-top: 2rem;
+    text-decoration: none;
+}
+.lihatPengumuman p{
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #0074B1;
+    color: var(--warna-text);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.hasil{
+    border-top: 1.5rem solid #0074B1;
+}
+.headsilos{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 2rem;
+}
+.card-wrap{
+    margin-left: 5%;
+    width: 90%;
+    margin-top: 2rem;
+    border-bottom: 1.2rem solid #0074B1;
+    padding-bottom: 2rem;
+    border-radius: 5px;
+}
+.congrats{
+    display: flex;
+    justify-content: center;
+    background-color: #0074B1;
+    width: 100%;
+    height: 75px;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--warna-text);
+    border-radius: 7px;
+}
+.data-diri{
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 2.5rem;
+    justify-content: center;
+}
+.data-diri img{
+    width: 275px;
+    height: 300px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.data p{
+    font-size: 1.75rem;
+    font-weight: 500;
+    width: 100%;
+}
+.data span{
+    font-weight: 600;
+    display: inline-block;
+    width: 175px;
+}
+.headsiltalos{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 2rem;
+}
+.card-wraptalos{
+    margin-left: 5%;
+    width: 90%;
+    margin-top: 2rem;
+    border-bottom: 1.2rem solid #DD4C38;
+    padding-bottom: 2rem;
+    border-radius: 5px;
+}
+.congratstalos{
+    display: flex;
+    justify-content: center;
+    background-color: #DD4C38;
+    width: 100%;
+    height: 75px;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--warna-text);
+    border-radius: 7px;
+}
+.data-diritalos{
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 2.5rem;
+    justify-content: center;
+}
+.data-diritalos img{
+    width: 275px;
+    height: 300px;
+}
+.datatalos{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.datatalos p{
+    font-size: 1.75rem;
+    font-weight: 500;
+    width: 100%;
+}
+.datatalos span{
+    font-weight: 600;
+    display: inline-block;
+    width: 175px;
+}
+#ucapansemangat{
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #000000;
+    font-style: italic;
 }

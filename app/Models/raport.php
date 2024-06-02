@@ -18,6 +18,11 @@ class raport extends Model
         'ppkn',
     ];
 
+    public function getAverageScoreAttribute()
+    {
+        return ($this->bahasa_indonesia + $this->bahasa_inggris + $this->matematika + $this->ipa + $this->ppkn) / 5;
+    }
+
     /**
      * Get the user that owns the raport.
      */

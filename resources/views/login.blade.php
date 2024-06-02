@@ -44,7 +44,7 @@
                             @endforeach
                         </ul>
                     </div>
-                 @endif
+                @endif
 			</form>
 		</div>
 		<div class="overlay-container">

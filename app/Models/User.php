@@ -21,9 +21,24 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'nisn',
+        'tanggal_lahir',
+        'tempat_lahir',
+        'jenis_kelamin',
+        'alamat',
+        'nik',
+        'nomor_HP',
+        'foto',
+        'jurusan',
+        'payment',
+        'status'
     ];
 
+    public function raports()
+    {
+        return $this->hasMany(Raport::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

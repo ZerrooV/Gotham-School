@@ -23,7 +23,8 @@
             </div>
         </div>
 
-        <form action="" class="formbox-content">
+        <form action="{{ route('ppdb.form.store') }}" method="POST" class="formbox-content"  enctype="multipart/form-data">
+            @csrf
             <div class="headform" id="dataDiri">
                 <p class="judhal">Data Diri Calon Siswa</p>
                 <p class="deshal">Silakan lengkapi formulir data diri di bawah ini dengan benar</p>
@@ -34,19 +35,33 @@
                     <div class="form">
                         <p>NISN</p>
                         <input type="text" name="nisn" placeholder="Masukan NISN">
+
                     </div>
+                    @error('nisn')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="form">
                         <p>Nama Lengkap</p>
-                        <input type="text" name="nama" placeholder="Masukan Nama Lengkap">
+                        {{Auth::user()->name}}
                     </div>
+
                     <div class="form">
                         <p>Tanggal Lahir</p>
                         <input type="date" name="tanggal_lahir">
                     </div>
+                    @error('tanggal_lahir')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="form">
                         <p>Tempat Lahir</p>
                         <input type="text" name="tempat_lahir" placeholder="Masukan Tempat Lahir">
                     </div>
+                    @error('tempat_lahir')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="form">
                         <p>Jenis Kelamin</p>
                         <select name="jenis_kelamin">
@@ -54,10 +69,17 @@
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
+                    @error('jenis_kelamin')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="form">
                         <p>Alamat</p>
                         <input type="text" name="alamat" placeholder="Masukan Alamat">
                     </div>
+                    @error('alamat')
+                            <small>{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="formkanan">
@@ -65,17 +87,29 @@
                         <p>NIK</p>
                         <input type="text" name="nik" placeholder="Masukan NIK">
                     </div>
+                    @error('nik')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="form">
                         <p>Email</p>
-                        <input type="text" name="email" placeholder="Masukan Email">
+                        {{Auth::user()->email}}
                     </div>
+
                     <div class="form">
                         <p>No HP / WhatsApp</p>
                         <input type="text" name="nomor_HP" placeholder="Masukan Nomor">
                     </div>
+                    @error('nomor_HP')
+                            <small>{{ $message }}</small>
+                    @enderror
+
                     <div class="formfoto">
                         <label for="formFile" class="form-label">Foto 3x4</label>
                         <input class="form-control" type="file" id="formFile" name="foto">
+                        @error('foto')
+                            <small>{{ $message }}</small>
+                        @enderror
                         <p>Ketentuan : Mohon untuk mengupload foto <br> formal anda dengan background merah ukuran 3x4</p>
                     </div>
                 </div>
@@ -87,131 +121,52 @@
                 <hr>
             </div>
             <div class="formnilai">
+                @foreach (range(1, 5) as $semester)
                 <div class="inputNilai">
-                    <p>Semester 1</p>
+                    <p>Semester {{ $semester }}</p>
                     <div class="mapel">
                         <div class="input">
-                            <label for="indonesia">Bahasa Indonesia</label>
-                            <input type="text" name="indonesia" id="">
+                            <label for="indonesia_semester_{{ $semester }}">Bahasa Indonesia</label>
+                            <input type="text" name="indonesia_semester_{{ $semester }}" id="indonesia_semester_{{ $semester }}">
                         </div>
+                        @error("indonesia_semester_{{ $semester }}")
+                            <small>{{ $message }}</small>
+                        @enderror
+
                         <div class="input">
-                            <label for="indonesia">Bahasa Inggris</label>
-                            <input type="text" name="Inggris" id="">
+                            <label for="inggris_semester_{{ $semester }}">Bahasa Inggris</label>
+                            <input type="text" name="inggris_semester_{{ $semester }}" id="inggris_semester_{{ $semester }}">
                         </div>
+                        @error("inggris_semester_{{ $semester }}")
+                            <small>{{ $message }}</small>
+                        @enderror
+
                         <div class="input">
-                            <label for="indonesia">Matematika</label>
-                            <input type="text" name="Matematika" id="">
+                            <label for="matematika_semester_{{ $semester }}">Matematika</label>
+                            <input type="text" name="matematika_semester_{{ $semester }}" id="matematika_semester_{{ $semester }}">
                         </div>
+                        @error("matematika_semester_{{ $semester }}")
+                            <small>{{ $message }}</small>
+                        @enderror
+
                         <div class="input">
-                            <label for="indonesia">IPA</label>
-                            <input type="text" name="IPA" id="">
+                            <label for="ipa_semester_{{ $semester }}">IPA</label>
+                            <input type="text" name="ipa_semester_{{ $semester }}" id="ipa_semester_{{ $semester }}">
                         </div>
+                        @error("ipa_semester_{{ $semester }}")
+                            <small>{{ $message }}</small>
+                        @enderror
+
                         <div class="input">
-                            <label for="indonesia">PPKN</label>
-                            <input type="text" name="PPKN" id="">
+                            <label for="ppkn_semester_{{ $semester }}">PPKN</label>
+                            <input type="text" name="ppkn_semester_{{ $semester }}" id="ppkn_semester_{{ $semester }}">
                         </div>
+                        @error("ppkn_semester_{{ $semester }}")
+                            <small>{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
-                <div class="inputNilai">
-                    <p>Semester 2</p>
-                    <div class="mapel">
-                        <div class="input">
-                            <label for="indonesia">Bahasa Indonesia</label>
-                            <input type="text" name="indonesia" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Bahasa Inggris</label>
-                            <input type="text" name="Inggris" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Matematika</label>
-                            <input type="text" name="Matematika" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">IPA</label>
-                            <input type="text" name="IPA" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">PPKN</label>
-                            <input type="text" name="PPKN" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="inputNilai">
-                    <p>Semester 3</p>
-                    <div class="mapel">
-                        <div class="input">
-                            <label for="indonesia">Bahasa Indonesia</label>
-                            <input type="text" name="indonesia" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Bahasa Inggris</label>
-                            <input type="text" name="Inggris" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Matematika</label>
-                            <input type="text" name="Matematika" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">IPA</label>
-                            <input type="text" name="IPA" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">PPKN</label>
-                            <input type="text" name="PPKN" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="inputNilai">
-                    <p>Semester 4</p>
-                    <div class="mapel">
-                        <div class="input">
-                            <label for="indonesia">Bahasa Indonesia</label>
-                            <input type="text" name="indonesia" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Bahasa Inggris</label>
-                            <input type="text" name="Inggris" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Matematika</label>
-                            <input type="text" name="Matematika" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">IPA</label>
-                            <input type="text" name="IPA" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">PPKN</label>
-                            <input type="text" name="PPKN" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="inputNilai">
-                    <p>Semester 5</p>
-                    <div class="mapel">
-                        <div class="input">
-                            <label for="indonesia">Bahasa Indonesia</label>
-                            <input type="text" name="indonesia" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Bahasa Inggris</label>
-                            <input type="text" name="Inggris" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">Matematika</label>
-                            <input type="text" name="Matematika" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">IPA</label>
-                            <input type="text" name="IPA" id="">
-                        </div>
-                        <div class="input">
-                            <label for="indonesia">PPKN</label>
-                            <input type="text" name="PPKN" id="">
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="headform" id="inputJurusan">
@@ -233,6 +188,18 @@
                     <option value="Network System">Network System</option>
                 </select>
             </div>
+            @if($errors->any())
+            <div class="alert-login">
+                <ul>
+                    @foreach($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+                <script>
+                    alert("{{ $errors->first() }}");
+                </script>
+            @endif
             <button type="submit" class="btn-daftar">Buat Pendaftaran</button>
         </form>
     </div>

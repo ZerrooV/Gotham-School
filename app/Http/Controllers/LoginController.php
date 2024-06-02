@@ -60,7 +60,6 @@ class LoginController extends Controller
             return redirect()->route('register')->with('error', 'Gagal membuat akun. Silakan coba lagi.');
         }
     }
-
     function logout(){
         Auth::logout();
         return redirect('login');

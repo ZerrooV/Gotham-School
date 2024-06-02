@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 // DOM ganti judul
 document.addEventListener('DOMContentLoaded', function() {
     const judulElement = document.querySelector('.judul p');
@@ -40,46 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// DOM Active state sidebar TAPI GABISA
-document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.navigasi .navlink');
-    const currentUrl = window.location.href;
+// =============== buat ganti judul filter jurusan ========================== //
+document.addEventListener('DOMContentLoaded', (event) => {
+    const jurusanSelect = document.getElementById('jurusan-select');
+    const jurdul = document.getElementById('jurdul');
 
-    navLinks.forEach(link => {
-        if (link.parentNode.href === currentUrl) {
-            link.classList.add('active');
-        }
-
-        link.addEventListener('click', function () {
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-        });
+    jurusanSelect.addEventListener('change', function() {
+        jurdul.textContent = this.options[this.selectedIndex].text;
     });
 });
-
-//DOM buat active state formbox-nav
-
-
-// DOM buat COUNTDOWN waktu di Pengumuman
-var countdownDate = new Date("Jully 1, 2024 00:00:00").getTime();
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countdownDate - now;
-
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
-
-    if (distance < 0) {
-        clearInterval(x);
-        document.querySelector(".countdown").innerHTML = "Pengumuman Telah Dimulai!";
-    }
-}, 1000);
 
 
