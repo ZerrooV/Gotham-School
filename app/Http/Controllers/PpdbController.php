@@ -6,6 +6,7 @@ use App\Models\Countdown;
 use App\Models\raport;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Midtrans\Snap;
 
 class PpdbController extends Controller
 {
@@ -21,13 +22,63 @@ class PpdbController extends Controller
 
     public function pembayaran()
     {
-        return view('ppdb.pembayaran');
+        // Set konfigurasi Midtrans
+        \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
+        \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
+        \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
+        \Midtrans\Config::$is3ds = config('services.midtrans.is_3ds');
+
+        // Buat ID transaksi unik
+        $orderId = uniqid();
+
+        // Data transaksi
+        $params = [
+            'transaction_details' => [
+                'order_id' => $orderId,
+                'gross_amount' => 3000, // Jumlah pembayaran
+            ],
+            'customer_details' => [
+                'first_name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+            ],
+        ];
+
+        try {
+            // Buat transaksi Midtrans
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            return view('ppdb.pembayaran', compact('snapToken'));
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function handleNotification(Request $request)
+    {
+        // Set konfigurasi Midtrans
+        \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
+        \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
+
+        $notification = new \Midtrans\Notification();
+
+        $transactionStatus = $notification->transaction_status;
+        $orderId = $notification->order_id;
+
+        if ($transactionStatus == 'capture' || $transactionStatus == 'settlement') {
+            // Pembayaran berhasil
+            $user = User::where('order_id', $orderId)->first();
+            if ($user) {
+                $user->payment = 'Terbayar';
+                $user->save();
+            }
+        }
+
+        return response()->json(['status' => 'ok']);
     }
 
     public function listpen(Request $request)
     {
         $selectedJurusan = $request->input('jurusan', 'Software Engineering'); // Default to 'Software Engineering'
-        $siswa = User::where('payment', 'Belum Bayar')
+        $siswa = User::where('payment', 'Terbayar')
                     ->where('jurusan', $selectedJurusan)
                     ->get();
 
@@ -70,7 +121,7 @@ class PpdbController extends Controller
         $jurusanList = ['Software Engineering', 'Cyber Security', 'Network System'];
 
         foreach ($jurusanList as $jurusan) {
-            $siswa = User::where('status', 'Pending')
+            $siswa = User::where('payment', 'Terbayar')
                         ->where('jurusan', $jurusan)
                         ->get()
                         ->sortByDesc(function($user) {
@@ -78,23 +129,19 @@ class PpdbController extends Controller
                         });
 
             $sortedSiswa = $siswa->sortByDesc(function ($user) {
-                return $this->getAverageScores($user->id); // Urutkan siswa dari nilai tertinggi ke terendah
+                return $this->getAverageScores($user->id);
             });
 
-            // Ambil dua siswa teratas
             $topTwoSiswa = $sortedSiswa->take(2);
 
-            // Ambil siswa sisanya (yang tidak lolos)
             $siswaYangTidakLolos = $sortedSiswa->reject(function ($user) use ($topTwoSiswa) {
                 return $topTwoSiswa->contains($user);
             });
 
-            // Update status siswa yang lolos
             $topTwoSiswa->each(function($user) {
                 $user->update(['status' => 'LOLOS']);
             });
 
-            // Update status siswa yang tidak lolos
             $siswaYangTidakLolos->each(function($user) {
                 $user->update(['status' => 'TIDAK LOLOS']);
             });

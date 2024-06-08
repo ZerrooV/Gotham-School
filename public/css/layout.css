@@ -483,15 +483,55 @@ header{
 ============================================ */
 .payment{
     font-family: var(--font-main);
+}
+.cardbill{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 5rem;
+}
+#billhead{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    background-color: #0074B1;
     text-align: center;
-    padding-top: 20%;
-    background-color:#050505;
+    color: var(--warna-text);
 }
-.payment span {
-    font-size: 56px;
-    color: white;
+.cardbill-content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
 }
-
+.cardbill-content span{
+    font-weight: 600;
+    display: inline-block;
+    width: 300px;
+}
+#pay-button{
+    padding: 15px;
+    background-color: #0074B1;
+    border-radius: 7px;
+    border: 2px solid #ffc010;
+    color: var(--warna-text);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 37%;
+}
+#paid-button{
+    padding: 15px;
+    background-color: #0a0e0f;
+    border-radius: 7px;
+    border: 2px solid #ffc010;
+    color: var(--warna-text);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 37%;
+}
 /*==========================================
                    listpen
 ============================================ */

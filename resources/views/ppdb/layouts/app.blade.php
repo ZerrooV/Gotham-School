@@ -9,6 +9,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="icon" href="{{asset('assets/images/Logo Only 1.svg')}}" type="image/svg+xml">
     <link rel="stylesheet" href="{{asset('css/layout.css')}}">
+    @yield('custom-head')
     <title>PPDB Gotham School</title>
 </head>
 <body>
