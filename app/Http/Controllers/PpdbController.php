@@ -7,6 +7,8 @@ use App\Models\raport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Midtrans\Snap;
+use Midtrans\Config;
+use Midtrans\Notification;
 
 class PpdbController extends Controller
 {
@@ -19,7 +21,6 @@ class PpdbController extends Controller
     public function formdata(){
         return view('ppdb.formdata');
     }
-
     public function pembayaran()
     {
         // Set konfigurasi Midtrans
