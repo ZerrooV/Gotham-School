@@ -35,7 +35,6 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/formdata','formdata')->name('formdata');
         Route::post('/formdata', [FormController::class, 'storeform'])->name('form.store');
         Route::get('/pembayaran', 'pembayaran')->name('pembayaran');
-        Route::post('/pembayaran', [PpdbController::class, 'handleNotification'])->name('payment.notification');
         Route::get('/listpen', 'listpen')->name('listpen');
         Route::get('/pengumuman', 'pengumuman')->name('pengumuman');
         Route::post('/pengumuman', [CountDownController::class, 'setCountdown'])->name('setCountdown');
@@ -44,4 +43,4 @@ Route::middleware(['auth'])->group(function(){
     });
 });
 
-
+Route::post('ppdb/midtrans', [PpdbController::class, 'handleNotification'])->name('payment.notification');

@@ -6,6 +6,8 @@ use App\Models\Countdown;
 use App\Models\raport;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Midtrans\Snap;
 use Midtrans\Config;
 use Midtrans\Notification;
@@ -29,8 +31,21 @@ class PpdbController extends Controller
         \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
         \Midtrans\Config::$is3ds = config('services.midtrans.is_3ds');
 
+        // Ambil pengguna yang sedang login
+        $userID = Auth::id();
+        $user = User::find($userID);
+
+        // Pastikan pengguna tidak null
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         // Buat ID transaksi unik
         $orderId = uniqid();
+
+        // Simpan order_id ke pengguna
+        $user->order_id = $orderId;
+        $user->save();
 
         // Data transaksi
         $params = [
@@ -39,8 +54,8 @@ class PpdbController extends Controller
                 'gross_amount' => 3000, // Jumlah pembayaran
             ],
             'customer_details' => [
-                'first_name' => auth()->user()->name,
-                'email' => auth()->user()->email,
+                'first_name' => $user->name,
+                'email' => $user->email,
             ],
         ];
 
@@ -53,16 +68,33 @@ class PpdbController extends Controller
         }
     }
 
+
     public function handleNotification(Request $request)
     {
         // Set konfigurasi Midtrans
         \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
         \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
+        \Midtrans\Config::$isSanitized = config('services.midtrans.is_sanitized');
+        \Midtrans\Config::$is3ds = config('services.midtrans.is_3ds');
 
-        $notification = new \Midtrans\Notification();
+        // Tambahkan log untuk memeriksa bahwa metode ini dipanggil
+        \Illuminate\Support\Facades\Log::info('handleNotification method is called.');
 
-        $transactionStatus = $notification->transaction_status;
-        $orderId = $notification->order_id;
+        $payload = $request->all();
+        Log::info(message:'incoming-midtrans');
+
+        $orderId = $payload['order_id'];
+        $statuscode = $payload['status_code'];
+        $grossAmount = $payload['gross_amount'];
+        $reqSignature = $payload['signature_key'];
+
+        $signature = hash(algo:'sha512', data:$orderId.$statuscode.$grossAmount.config(key:'services.midtrans.server_key'));
+
+        if($signature != $reqSignature) {
+            return response()->json(['message' => 'invalid signature'],status:401);
+        }
+
+        $transactionStatus = $payload['transaction_status'];
 
         if ($transactionStatus == 'capture' || $transactionStatus == 'settlement') {
             // Pembayaran berhasil
@@ -70,11 +102,14 @@ class PpdbController extends Controller
             if ($user) {
                 $user->payment = 'Terbayar';
                 $user->save();
+                \Illuminate\Support\Facades\Log::info('Payment status updated for user: ' . $user->id);
+            } else {
+                \Illuminate\Support\Facades\Log::error('User not found for Order ID: ' . $orderId);
             }
         }
-
         return response()->json(['status' => 'ok']);
     }
+
 
     public function listpen(Request $request)
     {
